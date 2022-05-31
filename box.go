@@ -49,7 +49,7 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 	if err != nil {
 		return nil, err
 	}
-	b.shapes = append(b.shapes[:i], b.shapes[i+1]...)
+	b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
 
 	return shape_i, nil
 }
