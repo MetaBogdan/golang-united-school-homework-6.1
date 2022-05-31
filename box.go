@@ -1,6 +1,6 @@
 package golang_united_school_homework
 
-import "error"
+import "errors"
 
 // box contains list of shapes and able to perform operations on them
 type box struct {
@@ -19,7 +19,7 @@ func NewBox(shapesCapacity int) *box {
 // returns the error in case it goes out of the shapesCapacity range.
 func (b *box) AddShape(shape Shape) error {
 	if b.shapesCapacity == len(b.shapes) {
-		return error.New("shape out of the box capacity")
+		return errors.New("shape out of the box capacity")
 	}
 
 	b.shapes = append(b.shapes, shape)
@@ -30,7 +30,7 @@ func (b *box) AddShape(shape Shape) error {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) GetByIndex(i int) (Shape, error) {
 	if len(b.shapes) <= i {
-		return nil, error.New("index not found")
+		return nil, errors.New("index not found")
 	}
 
 	for k, val := range b.shapes {
@@ -38,7 +38,7 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 			return val, nil
 		}
 	}
-	return nil, error.New("index not found")
+	return nil, errors.New("index not found")
 
 }
 
